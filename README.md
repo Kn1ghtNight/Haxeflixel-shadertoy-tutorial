@@ -192,6 +192,7 @@ void main(){
 Now in PlayState.hx (or whatever class you are applying the shader in), put:
 
 ```haxe
+import openfl.filters.ShaderFilter;
 import VhsShader;
 ```
 
