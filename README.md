@@ -1,38 +1,39 @@
-# Haxeflixel and Shadertoy
-A small and stinky tutorial on how to hardcode shaders!!!!
+# HaxeFlixel + Shadertoy Tutorial
 
-**(NOTE: I do not have a lot of experience with glsl, so some information might be wrong.)**
+This is a "rewrite" of the cool shadertoy tutorial that [Kn1ghtNight](https://github.com/Kn1ghtNight) did.
 
-## STEP 1. Find a Shader.
+# STEP 1. Finding a shader
 
-We are going to use shadertoy for this. So first, open your web browser and go to [Shadertoy](https://shadertoy.com).
+For starters, we're going to find the shader that we'll be using.
 
-As you can see we have a few shaders on our screen.
+So now, we want to open our web browser and go to [Shadertoy](https://shadertoy.com).
 
-![image](https://user-images.githubusercontent.com/89167668/226473399-53835dd7-4f62-43f3-92d4-2587c3498642.png)
+As seen in the screenshot shown below, we have a few shaders presented on our screen.
 
-We aren't going to click on any of them but instead go to the search bar. Let's search VHS for example.
+![image](https://github.com/oofienoob/Haxeflixel-shadertoy-tutorial/assets/143152154/8fa16462-a086-4b2c-b794-7c35ed2caced)
 
-![image](https://user-images.githubusercontent.com/89167668/226475082-c7ab672e-1081-4ec1-9788-7f2e0db00b4d.png)
+We aren't gonna click on any of them though. However, we are gonna click on the search bar which is on the top left of the screen and search up VHS for example.
 
-Lets choose this one right here. "20151110_VHS by FMS_Cat"
+![image](https://github.com/oofienoob/Haxeflixel-shadertoy-tutorial/assets/143152154/0d9dfb2c-9f20-4306-8681-e5ae6cf9f961)
 
-![image](https://user-images.githubusercontent.com/89167668/226475188-19653fda-2222-43da-b63d-53880d8e1eba.png)
+After looking at the collection of VHS shaders, let's use 20151110_VHS by FMS_Cat as an example. Let's click it, shall we?
 
-## STEP 2. Convert it to a HaxeFlixel shader.
+![image](https://github.com/oofienoob/Haxeflixel-shadertoy-tutorial/assets/143152154/4edba318-288e-45db-8006-531aaa5905fc)
 
-As you can see we have our shader on the left, and the code for it on the right.
+## STEP 2. Converting to a Haxeflixel Shader
 
-![image](https://user-images.githubusercontent.com/89167668/226476895-1b709d02-1fc2-4557-80c5-b9a31f21eb87.png)
+After clicking it, we see the two things, being the showcase of the shader, and its code.
 
-We now make a file called VhsShader.hx for example.
+![image](https://github.com/oofienoob/Haxeflixel-shadertoy-tutorial/assets/143152154/4cabafd4-ab45-4dc2-94ae-762bf5ac8377)
 
-You can use this shader class template as an example.
+Now make a file in the source folder, and let's call it VhsShader.hx for an example.
+
+Open it in your code editing program, and paste the following template used as an example:
 
 ```haxe
 import flixel.system.FlxAssets.FlxShader;
 
-class VhsShader extends FlxShader//https://www.shadertoy.com/view/XtBXDt
+class VhsShader extends FlxShader //https://www.shadertoy.com/view/XtBXDt
 {
     @:glFragmentSource('
     #pragma header
@@ -53,19 +54,21 @@ class VhsShader extends FlxShader//https://www.shadertoy.com/view/XtBXDt
 }
 ```
 
-When converting our shader we need to modify a few things.
+Now you want to keep in mind, while we're porting our shader, we need to modify a few things to make it work with Haxe.
 
-We need to delete the parameters in mainImage.
+We now need to delete the parameters in mainImage.
 
-It should now look like this.
+When done that, it should look like this:
 
-![image](https://user-images.githubusercontent.com/89167668/226479920-cd47645a-2aa6-478c-bf8a-d87498da83a3.png)
+![image](https://github.com/oofienoob/Haxeflixel-shadertoy-tutorial/assets/143152154/b329b550-d03f-463a-8a8f-ce14087b77e3)
 
-We are going to pres Ctrl + A to select all of it and copy it to our clipboard.
+We are now gonna press CTRL + A in here so we can copy all the code, and paste it into our .hx file we created.
 
-Our shader code is pretty much done, all we need to do is paste this in to our shader class.
+![image](https://github.com/oofienoob/Haxeflixel-shadertoy-tutorial/assets/143152154/5fc04c87-d505-4f2b-b9ef-76a8324c66c9)
 
-It should look like this now.
+We are almost done with our code, 
+
+As of now, it should look like this:
 
 ```haxe
 import flixel.system.FlxAssets.FlxShader;
@@ -188,42 +191,47 @@ void main(){
 }
 ```
 
-## STEP 3: Adding the shader.
-Now in PlayState.hx (or whatever class you are applying the shader in), put:
+# STEP 3. Adding the Shader
+
+Open up the state you want to add the shader in, and put these imports in:
 
 ```haxe
-import VhsShader;
+	import openfl.filters.ShaderFilter;
+	import VhsShader;
 ```
 
-Near the imports.
-
-In our vars, put:
+Now, let's go to our variables in said state, and put this in:
 
 ```haxe
 	var shader:VhsShader;
 ```
 
-then in our stage, or function create, put:
+Finally, in our stage, or in the function create, put this in:
+
+Then, in our stage, or in the function create, put:
 
 ```haxe
-			shader = new VhsShader();
-			camGame.setFilters([new ShaderFilter(shader)]);
+	shader = new VhsShader();
+	camGame.setFilters([new ShaderFilter(shader)]);
 ```
 
-Now if we recompile and play, our shader is on camGame!
+Now if we compile, or recompile, whichever, we now see that the shader is now in camGame!
+
+[You can set the shader to be in any cam, (camGame, camHUD, or camOther).]
 
 ![image](https://user-images.githubusercontent.com/89167668/226491010-ba29e8a9-0a17-4ad2-9c64-82196c7fe95f.png)
 
-Now you might notice, our shader is not animated.
+As you've may noticed, the shader isn't animated.
 
-in function update, put:
+So, in the function update, paste the following code in there:
 
 ```haxe
-shader.update(elapsed);
+	shader.update(elapsed);
 ```
 
-And now our shader is animated!!!
+And now when we did that, the shader is now animated!
 
 ![2023-03-20 20-05-33](https://user-images.githubusercontent.com/89167668/226491713-a075633e-25a0-4401-a683-690b7a8656d3.gif)
 
-ey thanke for reading this tutorial i had to be not silly to write all of this!!
+thank you [Kn1ghtNight](https://github.com/Kn1ghtNight) for making the original tutorial again, without you i wouldn't be able to import shaders to haxeflixel
+
