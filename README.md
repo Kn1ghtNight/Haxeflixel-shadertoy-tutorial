@@ -2,7 +2,7 @@
 
 A small and stinky tutorial on how to hardcode shaders!!!!
 
-(NOTE: I do not have a lot of experience with glsl, so some information might be wrong.)
+**(NOTE: I do not have a lot of experience with glsl, so some information might be wrong.)**
 
 # STEP 1. Finding a shader
 
