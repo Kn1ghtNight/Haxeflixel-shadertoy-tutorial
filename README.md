@@ -1,6 +1,8 @@
 # HaxeFlixel + Shadertoy Tutorial
 
-This is a "rewrite" of the cool shadertoy tutorial that [Kn1ghtNight](https://github.com/Kn1ghtNight) did.
+A small and stinky tutorial on how to hardcode shaders!!!!
+
+(NOTE: I do not have a lot of experience with glsl, so some information might be wrong.)
 
 # STEP 1. Finding a shader
 
@@ -232,6 +234,4 @@ So, in the function update, paste the following code in there:
 And now when we did that, the shader is now animated!
 
 ![2023-03-20 20-05-33](https://user-images.githubusercontent.com/89167668/226491713-a075633e-25a0-4401-a683-690b7a8656d3.gif)
-
-thank you [Kn1ghtNight](https://github.com/Kn1ghtNight) for making the original tutorial again, without you i wouldn't be able to import shaders to haxeflixel
 
